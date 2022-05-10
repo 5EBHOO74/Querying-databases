@@ -109,8 +109,11 @@ def main_menu():
 
     :return: An integer indicating what menu option has been selected or -1 if the selected option is invalid.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    print('Please select an option:\n[1] Process Data\n[2] Query Database\n[3] Visualise Data\n[4] Exit')
+    option_choosen = int(input())
+    return f'Your selection: {option_choosen}'
+
+
 
 
 def sub_menu(menu_id=0):
