@@ -22,12 +22,9 @@ def greeting():
 
     :return: Does not return anything.
     """
-    print("Sales and Profit Data")
-    pass
     greetings = ("Sales and Profit Data")
     length = len(greetings) * '-'
     return (length, greetings, length)
-
     pass
 
 
