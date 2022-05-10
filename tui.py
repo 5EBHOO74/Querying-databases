@@ -24,8 +24,8 @@ def greeting():
     """
     greetings = ("Sales and Profit Data")
     length = len(greetings) * '-'
-    return (length, greetings, length)
-    pass
+    print(length, greetings, length)
+
 
 
 def error(msg):
