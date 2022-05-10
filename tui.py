@@ -39,8 +39,8 @@ def error(msg):
     :param msg: A string containing an error message.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    print(f"Error! {msg}")
+
 
 
 def status(operation, progress=-1):
@@ -72,8 +72,16 @@ def status(operation, progress=-1):
     :param progress: An integer indicating the progress made by the process.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+
+    # Determine what message to display
+    if progress == 0:
+        print(f'>> PROCESS STARTED: {operation}')
+    elif 0 <= progress <= 100:
+        print(f'>> PROCESS IN PROGRESS: {operation} ({progress}%)')
+    elif progress == 100:
+        print(f'>> PROCESS ENDED: {operation}')
+    else:
+        print(f'>> STATUS: {operation}')
 
 
 def main_menu():
