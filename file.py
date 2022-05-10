@@ -21,7 +21,7 @@ def file_path():
 
     :return: A string which is the path to the sales data file.
     """
-    return relative_file_path()
+    return relative_file_path
     pass
 
 
@@ -50,23 +50,21 @@ def load_data():
     :return: A tuple where the first item is a list containing the headings
     and the second item is a list containing the records
     """
-    file_path = relative_file_path()
+    file_path = relative_file_path
 
+    print ("Loading data from sales file")
     try:
         with open(file_path) as file:
             csv_reader = csv.reader(file)
             headings = next(csv_reader)
-            print(headings)
+            print("Appending list of headings and list of records in a tuple called New_tuple")
+
+            head = []
+            head.append(headings)
+            record1 = []
+            for line in csv_reader:
+                record1.append(line)
+                new_tuple = (head, '\n', record1)
     except IOError:
         print("Cannot read file.")
-    pass
 
-    print("Appending list of headings and list of records in a tuple called New_tuple")
-    head = []
-    head.append(headings)
-    record1 = []
-    for line in csv_reader:
-        record1.append(line)
-
-    new_tuple = (head, '\n', record1)
-    pass
