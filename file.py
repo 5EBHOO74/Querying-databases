@@ -50,5 +50,23 @@ def load_data():
     :return: A tuple where the first item is a list containing the headings
     and the second item is a list containing the records
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
+    file_path = relative_file_path()
+
+    try:
+        with open(file_path) as file:
+            csv_reader = csv.reader(file)
+            headings = next(csv_reader)
+            print(headings)
+    except IOError:
+        print("Cannot read file.")
+    pass
+
+    print("Appending list of headings and list of records in a tuple called New_tuple")
+    head = []
+    head.append(headings)
+    record1 = []
+    for line in csv_reader:
+        record1.append(line)
+
+    new_tuple = (head, '\n', record1)
     pass
