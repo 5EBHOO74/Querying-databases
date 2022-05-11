@@ -235,8 +235,9 @@ def record_id(valid_ids=None):
     :param valid_ids: A list of valid record id values.
     :return: The id for a record or -1 if invalid.
     """
-    print("Enter a record")
-    pass
+    print("Enter a record id")
+    chosen_id = int(input())
+    return chosen_id
 
 
 def customers():
