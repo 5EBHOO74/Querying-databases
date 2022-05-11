@@ -109,11 +109,15 @@ def main_menu():
 
     :return: An integer indicating what menu option has been selected or -1 if the selected option is invalid.
     """
+
     print('Please select an option:\n[1] Process Data\n[2] Query Database\n[3] Visualise Data\n[4] Exit')
-    option_choosen = int(input())
-    return f'Your selection: {option_choosen}'
-
-
+    option_chosen = int(input())
+    if 1 <= option_chosen <= 4:
+        print (f'Your selection: {option_chosen}')
+        return option_chosen
+    else:
+        error('Invalid selection.')
+        return -1
 
 
 def sub_menu(menu_id=0):
@@ -157,8 +161,45 @@ def sub_menu(menu_id=0):
     :param menu_id: An integer indicating what menu should be displayed.
     :return: An integer indicating what menu option has been selected or -1 if the selected option is invalid.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+
+    print('Please select an option: ')
+
+    if menu_id == 1:
+        print('[1] Record By Id\n[2] Records by Customers\n[3] Group Records by Shipment Mode\n[4] Summarise Records')
+        option_picked1 = int(input())
+        if 1 <= option_picked1 <= 4:
+            print(f"Your selection: {option_picked1}")
+            return option_picked1
+        else:
+            error('Invalid selection.')
+            return -1
+
+    elif menu_id == 2:
+        print("""[1] Setup database
+        [2] Retrieve all customers in alphabetical order from the database
+        [3] Retrieve the total sales of each product from the database
+        [4] Retrieve the top 3 product categories in terms of profit from the database
+        [5] Retrieve the top 3 product sub-categories in terms of sales for specific dates from the database""")
+        option_picked2 = int(input())
+        if 1 <= option_picked2 <= 5:
+            print(f'Your selection: {option_picked2}')
+            return option_picked2
+        else:
+            error('Invalid selection.')
+            return -1
+
+    elif menu_id == 3:
+        print('[1] Static Summary\n[2] Animated Summary')
+        option_picked3 = int(input())
+        if 1 <= option_picked3 <= 5:
+            print(f'Your selection: {option_picked3}')
+            return option_picked3
+        else:
+            error('Invalid selection.')
+            return -1
+    else:
+        error('menu id should be between 1 and 3.')
+        return -1
 
 
 def total_records(num_records):
