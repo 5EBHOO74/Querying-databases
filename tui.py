@@ -215,8 +215,8 @@ def total_records(num_records):
     :param num_records: The total number of records in the data set.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    print(f"There are {num_records} records in the data set.")
+
 
 
 def record_id(valid_ids=None):
@@ -235,7 +235,7 @@ def record_id(valid_ids=None):
     :param valid_ids: A list of valid record id values.
     :return: The id for a record or -1 if invalid.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
+    print("Enter a record")
     pass
 
 
