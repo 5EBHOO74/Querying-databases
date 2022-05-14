@@ -59,12 +59,14 @@ def load_data():
             headings = next(csv_reader)
             print("Appending list of headings and list of records in a tuple called New_tuple")
 
-            head = []
-            head.append(headings)
-            record1 = []
+            headers = []
+            headers.append(headings)
+            records = []
             for line in csv_reader:
-                record1.append(line)
-                new_tuple = (head, '\n', record1)
+                records.append(line)
+                if line % 10 == 0:
+                    print(line)
+        return (headers, records)
     except IOError:
         print("Cannot read file.")
 

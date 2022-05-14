@@ -9,8 +9,10 @@ A function may also need to format and/or structure a response e.g. return a lis
 Any errors or invalid inputs should be handled appropriately and as specified.
 Please note that you do not need to read the data file or perform any other such processing in this module.
 """
-import datetime
 
+import csv
+import datetime
+import file
 
 def greeting():
     """
@@ -237,7 +239,11 @@ def record_id(valid_ids=None):
     """
     print("Enter a record id")
     chosen_id = int(input())
-    return chosen_id
+    if chosen_id in valid_ids:
+            return chosen_id
+    else:
+            error('Invalid record id.')
+            return -1
 
 
 def customers():
@@ -260,8 +266,15 @@ def customers():
 
     :return: A list of valid customer ids
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    customer_ids = []
+    print("How many Customer ids do you wish to enter")
+    num_ids = int(input())
+
+    for count in range(num_ids):
+        print("Please enter a customer id?")
+        customer_ids.append(input())
+    return customer_ids
+
 
 
 def dates():

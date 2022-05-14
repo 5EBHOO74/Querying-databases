@@ -1,16 +1,14 @@
-def error(msg):
 
-    print(f"Error! {msg}")
 
-def main_menu():
-    print('Please select an option:\n[1] Process Data\n[2] Query Database\n[3] Visualise Data\n[4] Exit')
-    option_chosen = int(input())
-    if 1 <= option_chosen <= 4:
-        print (f'Your selection: {option_chosen}')
-        return option_chosen
+customer_ids = []
+print("How many Customer ids do you wish to enter")
+num_ids = int(input())
+
+for count in range(num_ids):
+    print("Please enter a customer id?")
+    customer_ids.append(input())
+    X = customer_ids not in file
+    if customer_ids in file:
+        print(customer_ids)
     else:
-        error('Invalid selection.')
-        return -1
-
-
-main_menu()
+        print(f'Invalid customer id: {X}')

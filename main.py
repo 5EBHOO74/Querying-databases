@@ -1,3 +1,4 @@
+
 """
 THIS MODULE SHOULD NOT BE MODIFIED.
 
@@ -9,11 +10,10 @@ processing, querying of the database and for visualising information.
 
 
 # Import required modules
-import tui
+import csv
 import file
-import process
-import database
-import visual
+import tui
+
 
 
 def run():
