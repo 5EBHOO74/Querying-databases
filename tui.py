@@ -296,8 +296,14 @@ def dates():
 
     :return: A list of valid dates
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    dates = []
+    print("How many dates do you wish to enter")
+    num_dates = int(input())
+
+    for count in range(num_dates):
+        print("Please enter a date")
+        dates.append(input())
+    return dates
 
 
 def sample_size(max_records, default_size=5):
@@ -312,8 +318,10 @@ def sample_size(max_records, default_size=5):
     :param max_records: The maximum number of records that can be sampled.
     :return: An integer corresponding to the sample size.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    print(f"Please enter a number of records to be sampled less than {max_records}")
+    default_size: int(input())fgit
+    return sample_size
+
 
 
 def display_record(record, cols=None):
