@@ -318,9 +318,12 @@ def sample_size(max_records, default_size=5):
     :param max_records: The maximum number of records that can be sampled.
     :return: An integer corresponding to the sample size.
     """
-    print(f"Please enter a number of records to be sampled less than {max_records}")
-    default_size: int(input())fgit
-    return sample_size
+    print("Please enter a whole number that represent the number of records sampled?")
+    num_of_records = int(input())
+    if num_of_records >= max_records:
+        return num_of_records
+    else:
+        return default_size
 
 
 
@@ -345,8 +348,8 @@ def display_record(record, cols=None):
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything for basic function or a list of invalid indexes for the advance task
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    record = []
+    print(record)
 
 
 def display_records(records, cols=None):
@@ -366,7 +369,8 @@ def display_records(records, cols=None):
     :param cols: A list of integer values that represent column indexes.
     :return: Does not return anything for the basic task or a count of empty records encountered for the advance task.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
+    record = []
+    print(record)
     pass
 
 
@@ -393,8 +397,9 @@ def display_groups(groups):
     :param groups: A dictionary containing group names as keys and records as values.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    groups = {}
+    for keys,value in sorted (groups.items()):
+        print(f"{{{keys}}}: \n {value}")
 
 
 def display_summary(summary):
