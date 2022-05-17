@@ -7,7 +7,7 @@ This module is responsible for reading from and writing to the data file.
 
 # import required modules
 import csv
-import tui
+
 
 # path to data file
 relative_file_path = 'data/sales.csv'
@@ -50,23 +50,16 @@ def load_data():
     :return: A tuple where the first item is a list containing the headings
     and the second item is a list containing the records
     """
-    file_path = relative_file_path
-
-    print ("Loading data from sales file")
+    data = relative_file_path
+    print("Loading data from sales file")
     try:
-        with open(file_path) as file:
+        with open(data) as file:
             csv_reader = csv.reader(file)
             headings = next(csv_reader)
             print("Appending list of headings and list of records in a tuple called New_tuple")
-
-            headers = []
-            headers.append(headings)
             records = []
             for line in csv_reader:
                 records.append(line)
-                if line % 10 == 0:
-                    print(line)
-        return (headers, records)
+            return headings, records
     except IOError:
         print("Cannot read file.")
-

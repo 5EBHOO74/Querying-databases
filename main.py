@@ -7,13 +7,11 @@ program and how the program behaves. It uses the other modules to interact with 
 processing, querying of the database and for visualising information.
 
 """
-
-
-# Import required modules
-import csv
+import visual
 import file
 import tui
-
+import process
+import database
 
 
 def run():

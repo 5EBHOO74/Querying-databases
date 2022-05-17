@@ -10,7 +10,7 @@ Any errors or invalid inputs should be handled appropriately and as specified.
 Please note that you do not need to read the data file or perform any other such processing in this module.
 """
 
-import csv
+import re
 import datetime
 import file
 
@@ -77,11 +77,11 @@ def status(operation, progress=-1):
 
     # Determine what message to display
     if progress == 0:
-        print(f'>> PROCESS STARTED: {operation}')
-    elif 0 <= progress <= 100:
+        print(f'>> PROCESS STARTED: {operation}({progress}%)')
+    elif 0 < progress < 100:
         print(f'>> PROCESS IN PROGRESS: {operation} ({progress}%)')
     elif progress == 100:
-        print(f'>> PROCESS ENDED: {operation}')
+        print(f'>> PROCESS ENDED: {operation} ({progress}%)')
     else:
         print(f'>> STATUS: {operation}')
 
@@ -421,5 +421,7 @@ def display_summary(summary):
     :param summary: A dictionary containing names as keys and nested dictionaries as values.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    summary = {}
+    for keys,value in sorted (summary.items()):
+        print(f"{{{keys}}}:  {value}")
+
