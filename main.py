@@ -45,5 +45,5 @@ def run():
             [process, database, visual, file][option-1].execute(tui.sub_menu(option), headings, sales_records)
 
 
-# if __name__ == "__main__":
-#     run()
+if __name__ == "__main__":
+    run()

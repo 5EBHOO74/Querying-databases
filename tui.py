@@ -406,9 +406,10 @@ def display_groups(groups):
     :param groups: A dictionary containing group names as keys and records as values.
     :return: Does not return anything.
     """
-    groups = {}
-    for keys,value in sorted (groups.items()):
+
+    for keys,value in sorted(groups.items()):
         print(f"{{{keys}}}: \n {value}")
+
 
 
 def display_summary(summary):
@@ -429,7 +430,7 @@ def display_summary(summary):
     :param summary: A dictionary containing names as keys and nested dictionaries as values.
     :return: Does not return anything.
     """
-    summary = {}
+
     for keys,value in sorted (summary.items()):
         print(f"{{{keys}}}:  {value}")
 

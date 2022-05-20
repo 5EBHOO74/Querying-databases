@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import database
 
-
 def execute(action):
     """
     Task 28: Execute database action.

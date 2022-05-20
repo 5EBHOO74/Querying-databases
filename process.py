@@ -48,13 +48,13 @@ def execute(action, headings, records):
     action = int(input())
     print(f"You have selection option: {action}")
     if action == 1:
-        record_by_id()
+        tui.display_record(record_by_id(headings,records))
     elif action == 2:
-        records_by_customers()
+        tui.display_records(records_by_customers(headings,records))
     elif action == 3:
-        records_by_shipment_mode()
+        tui.display_groups(records_by_shipment_mode(headings,records))
     elif action == 4:
-        records_by_customers()
+        tui.display_summary(records_summary(headings, records))
     else:
         tui.error('Invalid selection.')
 
@@ -75,15 +75,11 @@ def record_by_id(headings, records):
     :param records: A list of records.
     :return: An individual record with the specified record id.
     """
-    tui.record_id()
-    valid_ids = 0
-    if tui.record_id() in records:
-        valid_ids += 1
-        if tui.record_id() <= 1:
-            return tui.display_record(tui.record_id())
-        else:
-            return tui.display_records(tui.record_id())
 
+    record_id = tui.record_id()
+    for record in records:
+        if record_id in record:
+            return record
 
 
 def records_by_customers(headings, records):
@@ -101,14 +97,12 @@ def records_by_customers(headings, records):
     :return: A list of records where a record contains a specified customer id.
     """
 
-    valid_ids = []
-    if tui.customers() in records:
-        valid_ids += 1
-
-
-
-
-
+    cus_ids = tui.customers()
+    cus_records = []
+    for record in records:
+        while cus_ids in record:
+            cus_records.append(record)
+        return cus_records
 
 
 def records_by_shipment_mode(headings, records):
@@ -131,8 +125,8 @@ def records_by_shipment_mode(headings, records):
     :param records: A list of records.
     :return: A dictionary with shipment mode as the keys and a list of records for each shipment mode as the values.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    sam_size = tui.sample_size(len(records))
+
 
 
 def records_summary(headings, records):

@@ -7,7 +7,6 @@ This module is responsible for setting up and querying the database.
 import sqlite3
 import tui
 
-
 def execute(action, headings, records):
     """
     Task 22: Execute database action.
