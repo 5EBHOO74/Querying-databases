@@ -8,6 +8,10 @@ This module is responsible for processing the data.
 import tui
 
 
+COL_IDS = 0
+COL_COS_IDS = 5
+
+
 def execute(action, headings, records):
     """
     Task 17: Execute process action
@@ -71,8 +75,15 @@ def record_by_id(headings, records):
     :param records: A list of records.
     :return: An individual record with the specified record id.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    tui.record_id()
+    valid_ids = 0
+    if tui.record_id() in records:
+        valid_ids += 1
+        if tui.record_id() <= 1:
+            return tui.display_record(tui.record_id())
+        else:
+            return tui.display_records(tui.record_id())
+
 
 
 def records_by_customers(headings, records):
@@ -89,8 +100,15 @@ def records_by_customers(headings, records):
     :param records: A list of records.
     :return: A list of records where a record contains a specified customer id.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+
+    valid_ids = []
+    if tui.customers() in records:
+        valid_ids += 1
+
+
+
+
+
 
 
 def records_by_shipment_mode(headings, records):

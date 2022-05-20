@@ -350,7 +350,6 @@ def display_record(record, cols=None):
     """
 
 
-    cols = []
     if len(cols) > 0:
         print(record(sorted(cols)))
     else:
@@ -374,7 +373,7 @@ def display_records(records, cols=None):
     :param cols: A list of integer values that represent column indexes.
     :return: Does not return anything for the basic task or a count of empty records encountered for the advance task.
     """
-    records = []
+
     empty_record = 0
     for record in records:
         if len(record) > 0:
