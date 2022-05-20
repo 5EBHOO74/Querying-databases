@@ -301,7 +301,7 @@ def dates():
     num_dates = int(input())
 
     for count in range(num_dates):
-        print("Please enter a date")
+        print("Please enter a date in format 'mm/dd/yy/': ")
         dates.append(input())
     return dates
 
@@ -348,8 +348,13 @@ def display_record(record, cols=None):
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything for basic function or a list of invalid indexes for the advance task
     """
-    record = []
-    print(record)
+
+
+    cols = []
+    if len(cols) > 0:
+        print(record(sorted(cols)))
+    else:
+        print("no column indexes supplied")
 
 
 def display_records(records, cols=None):
@@ -369,9 +374,14 @@ def display_records(records, cols=None):
     :param cols: A list of integer values that represent column indexes.
     :return: Does not return anything for the basic task or a count of empty records encountered for the advance task.
     """
-    record = []
-    print(record)
-    pass
+    records = []
+    empty_record = 0
+    for record in records:
+        if len(record) > 0:
+            print(record, end='\n')
+        else:
+            empty_record = empty_record + 1
+            return empty_record
 
 
 def display_groups(groups):
@@ -414,7 +424,6 @@ def display_summary(summary):
     'New York': {'sales': 157.56, 'quantity': 100, 'discount': 300.14, 'profit': 450.34}
 
     The function should display each key with its value in the format: '{key}: {value}'
-
     For higher marks (advance task):
         - the function should display the keys in natural (alphabetical and ascending) order
 

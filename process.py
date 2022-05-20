@@ -33,8 +33,26 @@ def execute(action, headings, records):
     :param records: A list of records.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    print(
+        """
+        Please select one of the following options:
+        [1] Record by id
+        [2] Record by customers
+        [3] Record by shipment mode
+        [4] Record by summary
+        """)
+    action = int(input())
+    print(f"You have selection option: {action}")
+    if action == 1:
+        record_by_id()
+    elif action == 2:
+        records_by_customers()
+    elif action == 3:
+        records_by_shipment_mode()
+    elif action == 4:
+        records_by_customers()
+    else:
+        tui.error('Invalid selection.')
 
 
 def record_by_id(headings, records):
