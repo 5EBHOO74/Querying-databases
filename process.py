@@ -77,8 +77,10 @@ def record_by_id(headings, records):
     """
 
     record_id = tui.record_id()
+    val_ids =[]
     for record in records:
-        if record_id in record:
+        if record_id in record[0]:
+            val_ids.append(record_id)
             return record
 
 
@@ -100,9 +102,9 @@ def records_by_customers(headings, records):
     cus_ids = tui.customers()
     cus_records = []
     for record in records:
-        while cus_ids in record:
+        if cus_ids in record[5]:
             cus_records.append(record)
-        return cus_records
+    return cus_records
 
 
 def records_by_shipment_mode(headings, records):
@@ -125,8 +127,25 @@ def records_by_shipment_mode(headings, records):
     :param records: A list of records.
     :return: A dictionary with shipment mode as the keys and a list of records for each shipment mode as the values.
     """
-    sam_size = tui.sample_size(len(records))
 
+    shipment_modes = {}
+
+    standard_class = first_class = second_class = same_day = 0
+    for record in records:
+        if record[4] == "Standard_Class":
+            standard_class.append(record)
+        elif record[4] == "First Class":
+            first_class.append(record)
+        elif record[4] == "Second Class":
+            second_class.append(record)
+        else:
+            same_day.append(record)
+
+    shipment_modes["Standard Class"] = standard_class
+    shipment_modes["Second Class"] = second_class
+    shipment_modes["First Class"] = first_class
+    shipment_modes["Same Day"] = same_day
+    return shipment_modes
 
 
 def records_summary(headings, records):

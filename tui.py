@@ -299,11 +299,11 @@ def dates():
     dates = []
     print("How many dates do you wish to enter")
     num_dates = int(input())
-
     for count in range(num_dates):
         print("Please enter a date in format 'mm/dd/yy/': ")
         dates.append(input())
     return dates
+
 
 
 def sample_size(max_records, default_size=5):
@@ -320,7 +320,7 @@ def sample_size(max_records, default_size=5):
     """
     print("Please enter a whole number that represent the number of records sampled?")
     num_of_records = int(input())
-    if num_of_records >= max_records:
+    if 0 < num_of_records <= max_records:
         return num_of_records
     else:
         return default_size
