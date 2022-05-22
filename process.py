@@ -171,5 +171,18 @@ def records_summary(headings, records):
     :return: A dictionary where the keys are the names of the states and the values are dictionaries containing
     the totals for sales, quantity, discount and profit.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    summary_of_records = {}
+
+    for record in records:
+        key = record[10]
+        t_sales = record[17]
+        qty = record[18]
+        disct = record[19]
+        prft = record[20]
+        if summary_of_records[key]:
+            summary_of_records[key] ={"Sales": summary_of_records[key]["sales"] + t_sales,
+                                      "Quantity": summary_of_records[key]['quantity'] + qty,
+                                      "Discount": summary_of_records[key]["discount"] + disct,
+                                      "Profit": summary_of_records[key]["profit"] + prft}
+        else:
+            print("Cannot find Key")
