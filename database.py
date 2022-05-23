@@ -7,7 +7,6 @@ This module is responsible for setting up and querying the database.
 
 import sqlite3
 import tui
-import file
 
 
 def execute(action, headings, records):
@@ -142,15 +141,15 @@ def retrieve_total_product_sales():
     cursor = db.cursor()
     sql = "SELECT Product_name, SUM(Sales) FROM records GROUP BY Product_name;"
     cursor.execute(sql)
-    all_records = cursor.fetchall()
+    total_records = cursor.fetchall()
     print("Total product sales is:  ")
     total_sales = []
-    for records in sorted(all_records):
+    for records in sorted(total_records):
         total_sales.append(records)
 
     db.commit()
-    print(total_sales)
-retrieve_total_product_sales()
+    return total_sales
+
 
 def retrieve_top_product_categories():
     """
@@ -164,8 +163,21 @@ def retrieve_top_product_categories():
     :param records: A list of records.
     :return: A list or tuple containing the records retrieved from the database.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    db = sqlite3.connect("data/sales.db")
+    cursor = db.cursor()
+
+    sql = "SELECT Category, SUM(Profit) FROM Records GROUP BY Category;"
+    cursor.execute(sql)
+    total_records = cursor.fetchall()
+
+    print("Top 3 categories are: ")
+    sorted_profit = []
+
+    for item in sorted(total_records):
+        sorted_profit.append(item)
+
+    db.commit()
+    print(sorted_profit[-1], sorted_profit[-2], sorted_profit[-3])
 
 
 def retrieve_top_product_subcategories():
@@ -182,5 +194,22 @@ def retrieve_top_product_subcategories():
     :return: A dictionary where the keys are the dates and the values are the top 3 product sub-categories (with
     the name and the sales for each sub-category) for that date.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    Order_date = input()
+    db = sqlite3.connect("data/sales.db")
+    cursor = db.cursor()
+
+    sql = "SELECT Sub_Category, Sales FROM Records WHERE Order_date=?"
+    values = [Order_date]
+    cursor.execute(sql, values)
+    total_records = cursor.fetchall()
+
+    print("Top 3 Sub_categories ")
+    dicts = {}
+    sorted_sales = []
+
+    for item in sorted(total_records):
+        sorted_sales.append(item)
+
+    db.commit()
+    dicts[Order_date] = (sorted_sales[-1], sorted_sales[-2], sorted_sales[-3])
+    return (dicts)
