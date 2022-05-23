@@ -8,9 +8,6 @@ This module is responsible for processing the data.
 import tui
 
 
-COL_IDS = 0
-COL_COS_IDS = 5
-
 
 def execute(action, headings, records):
     """

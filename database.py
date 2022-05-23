@@ -4,8 +4,11 @@ YOU SHOULD ALSO NOT REMOVE ANY OF THE COMMENTS OR CHANGE THE STRUCTURE IN ANY WA
 
 This module is responsible for setting up and querying the database.
 """
+
 import sqlite3
 import tui
+import file
+
 
 def execute(action, headings, records):
     """
@@ -31,8 +34,18 @@ def execute(action, headings, records):
     :param records: A list of records.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    if action == 1:
+        setup_database(headings, records)
+    elif action == 2:
+        tui.display_records(retrieve_customers_alphabetically())
+    elif action == 3:
+        tui.display_groups(retrieve_total_product_sales())
+    elif action == 4:
+        tui.display_records(retrieve_top_product_categories())
+    elif action == 5:
+        tui.display_summary(retrieve_top_product_subcategories())
+    else:
+        tui.error('Invalid selection.')
 
 
 def setup_database(headings, records):
@@ -46,8 +59,45 @@ def setup_database(headings, records):
     For higher marks (advance task):
         - Normalise the database into 2 or more tables.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    db = sqlite3.connect("data/sales.db")
+    cursor = db.cursor()
+
+    cursor.execute("""CREATE TABLE "Records"("Record_Id" INT PRIMARY KEY,
+    "Order_id" TEXT,
+    "Order_date" TEXT,
+    "ship_date" TEXT,
+    "ship_mode" TEXT,
+    "Customer_id" TEXT,
+    "Customer_name" TEXT,
+    "Segment" TEXT,
+    "Country" TEXT,
+    "City" TEXT,
+    "State" TEXT,
+    "Postal_Code" INT,
+    "Region" TEXT,
+    "Product_Id" TEXT,
+    "Category" TEXT,
+    "Sub_Category" TEXT,
+    "Product_name" TEXT,
+    "Sales" REAL,
+    "Quantity" INT,
+    "Discount" REAL,
+    "Profit" REAL); """)
+
+    print("Inserting data in to database...")
+
+
+
+
+    sql = """INSERT INTO Records('Record_Id', 'Order_id', 'Order_date', 'ship_date', 'ship_mode','Customer_id', 'Customer_name',
+          'Segment', 'Country', 'City', 'State', 'Postal_Code', 'Region', 'Product_Id', 'Category',
+          'Sub_Category', 'Product_Name', 'Sales', 'Quantity', 'Discount', 'Profit')
+          VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+
+    for item in records:
+        cursor.execute(sql, item)
+    db.commit()
+
 
 
 def retrieve_customers_alphabetically():
@@ -62,8 +112,18 @@ def retrieve_customers_alphabetically():
     :param records: A list of records.
     :return A list or tuple containing the records retrieved from the database.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    db = sqlite3.connect("data/sales.db")
+    cursor = db.cursor()
+    sql = "SELECT Customer_name FROM records;"
+    cursor.execute(sql)
+    all_records = cursor.fetchall()
+    print("The names of the Customers:" )
+    customer_names = []
+    for records in sorted(all_records):
+        customer_names.append(records)
+
+    db.commit()
+    return customer_names
 
 
 def retrieve_total_product_sales():
