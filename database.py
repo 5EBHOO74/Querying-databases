@@ -138,9 +138,19 @@ def retrieve_total_product_sales():
     :param records: A list of records.
     :return: A list or tuple containing the records retrieved from the database.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    db = sqlite3.connect("data/sales.db")
+    cursor = db.cursor()
+    sql = "SELECT Product_name, SUM(Sales) FROM records GROUP BY Product_name;"
+    cursor.execute(sql)
+    all_records = cursor.fetchall()
+    print("Total product sales is:  ")
+    total_sales = []
+    for records in sorted(all_records):
+        total_sales.append(records)
 
+    db.commit()
+    print(total_sales)
+retrieve_total_product_sales()
 
 def retrieve_top_product_categories():
     """
