@@ -26,9 +26,12 @@ def execute(action):
     :param action: An integer indicating which action (visual option) to perform.
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
-
+    if action == 1:
+        (static_summary())
+    elif action == 2:
+        (animated_summary())
+    else:
+        print("Invalid Selection")
 
 def static_summary():
     """
@@ -41,9 +44,22 @@ def static_summary():
 
     :return: Does not return anything.
     """
-    # TODO: Your code here (replace this TODO and remove the keyword pass)
-    pass
+    records = database.retrieve_total_product_sales()
+    x = []
+    y = []
+    num1 = 0
+    for record in records:
+        for item in record:
+            y.append(item[1])
+            x.append(item[0])
 
+
+    plt.plot(x, y)
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.show()
+
+static_summary()
 
 def animated_summary():
     """

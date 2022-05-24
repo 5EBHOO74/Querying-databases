@@ -148,9 +148,9 @@ def retrieve_total_product_sales():
         total_sales.append(records)
 
     db.commit()
-    return total_sales
+    print (total_sales)
 
-
+retrieve_total_product_sales()
 def retrieve_top_product_categories():
     """
     Task 26: Retrieve the top 3 product categories.
