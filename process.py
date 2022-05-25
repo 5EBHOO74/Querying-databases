@@ -171,15 +171,15 @@ def records_summary(headings, records):
     summary_of_records = {}
 
     for record in records:
-        key = record[10]
+        state = record[10]
         t_sales = record[17]
         qty = record[18]
         disct = record[19]
         prft = record[20]
-        if summary_of_records[key]:
-            summary_of_records[key] ={"Sales": summary_of_records[key]["sales"] + t_sales,
-                                      "Quantity": summary_of_records[key]['quantity'] + qty,
-                                      "Discount": summary_of_records[key]["discount"] + disct,
-                                      "Profit": summary_of_records[key]["profit"] + prft}
+        if summary_of_records[state]:
+            summary_of_records[state] ={"Sales": summary_of_records[state]["sales"] + t_sales,
+                                      "Quantity": summary_of_records[state]['quantity'] + qty,
+                                      "Discount": summary_of_records[state]["discount"] + disct,
+                                      "Profit": summary_of_records[state]["profit"] + prft}
         else:
             print("Cannot find Key")

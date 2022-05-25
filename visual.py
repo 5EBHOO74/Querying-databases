@@ -59,7 +59,7 @@ def static_summary():
     plt.ylabel("y")
     plt.show()
 
-static_summary()
+
 
 def animated_summary():
     """
