@@ -23,7 +23,7 @@ def file_path():
     :return: A string which is the path to the sales data file.
     """
     return relative_file_path
-    pass
+
 
 
 def load_data():
@@ -57,7 +57,7 @@ def load_data():
         with open(relative_file_path) as file:
             csv_reader = csv.reader(file)
             headings = next(csv_reader)
-            print("Appending list of headings and list of records in a tuple called New_tuple")
+            print("Appending list of headings and list of records in a tuple")
             records = []
             for line in csv_reader:
                 records.append(line)

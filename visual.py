@@ -47,18 +47,16 @@ def static_summary():
     records = database.retrieve_total_product_sales()
     x = []
     y = []
-    num1 = 0
+
     for record in records:
-        for item in record:
-            y.append(item[1])
-            x.append(item[0])
+        y.append(record[1])
+        x.append(record[0])
 
 
     plt.plot(x, y)
     plt.xlabel("x")
     plt.ylabel("y")
     plt.show()
-
 
 
 def animated_summary():

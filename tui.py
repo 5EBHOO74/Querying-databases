@@ -41,6 +41,7 @@ def error(msg):
     :param msg: A string containing an error message.
     :return: Does not return anything.
     """
+
     print(f"Error! {msg}")
 
 
@@ -141,7 +142,7 @@ def sub_menu(menu_id=0):
     If the value of the parameter 'menu_id' is 2 then a menu with the following options should be displayed:
     '[1] Setup database',
     '[2] Retrieve all customers in alphabetical order from the database',
-    '[3] Retrieve the total sales of each product from the database',
+    '[3] Retrieve the total sales of each product from th uses e database',
     '[4] Retrieve the top 3 product categories in terms of profit from the database',
     '[5] Retrieve the top 3 product sub-categories in terms of sales for specific dates from the database'
 
@@ -353,7 +354,7 @@ def display_record(record, cols=None):
     if len(cols) > 0:
         print(record(sorted(cols)))
     else:
-        print("no column indexes supplied")
+        print("cannot understand this message")
 
 
 def display_records(records, cols=None):
@@ -409,7 +410,6 @@ def display_groups(groups):
 
     for keys,value in sorted(groups.items()):
         print(f"{{{keys}}}: \n {value}")
-
 
 
 def display_summary(summary):

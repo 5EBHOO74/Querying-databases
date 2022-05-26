@@ -80,7 +80,6 @@ def record_by_id(headings, records):
             val_ids.append(record_id)
             return record
 
-
 def records_by_customers(headings, records):
     """
     Task 19: Retrieve records for specified customers.
@@ -102,6 +101,7 @@ def records_by_customers(headings, records):
         if cus_ids in record[5]:
             cus_records.append(record)
     return cus_records
+
 
 
 def records_by_shipment_mode(headings, records):
@@ -181,5 +181,6 @@ def records_summary(headings, records):
                                       "Quantity": summary_of_records[state]['quantity'] + qty,
                                       "Discount": summary_of_records[state]["discount"] + disct,
                                       "Profit": summary_of_records[state]["profit"] + prft}
+            return summary_of_records
         else:
             print("Cannot find Key")

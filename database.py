@@ -60,7 +60,7 @@ def setup_database(headings, records):
     """
     db = sqlite3.connect("data/sales.db")
     cursor = db.cursor()
-
+    print("Creating DataBase")
     cursor.execute("""CREATE TABLE "Records"("Record_Id" INT PRIMARY KEY,
     "Order_id" TEXT,
     "Order_date" TEXT,
@@ -86,10 +86,9 @@ def setup_database(headings, records):
     print("Inserting data in to database...")
 
 
-
-
-    sql = """INSERT INTO Records('Record_Id', 'Order_id', 'Order_date', 'ship_date', 'ship_mode','Customer_id', 'Customer_name',
-          'Segment', 'Country', 'City', 'State', 'Postal_Code', 'Region', 'Product_Id', 'Category',
+    sql = """INSERT INTO Records('Record_Id', 'Order_id', 'Order_date', 'ship_date',
+          'ship_mode','Customer_id', 'Customer_name', 'Segment', 'Country', 'City', 
+          'State', 'Postal_Code', 'Region', 'Product_Id', 'Category',
           'Sub_Category', 'Product_Name', 'Sales', 'Quantity', 'Discount', 'Profit')
           VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
@@ -148,9 +147,8 @@ def retrieve_total_product_sales():
         total_sales.append(records)
 
     db.commit()
-    print (total_sales)
+    return total_sales
 
-retrieve_total_product_sales()
 def retrieve_top_product_categories():
     """
     Task 26: Retrieve the top 3 product categories.
@@ -177,7 +175,7 @@ def retrieve_top_product_categories():
         sorted_profit.append(item)
 
     db.commit()
-    print(sorted_profit[-1], sorted_profit[-2], sorted_profit[-3])
+    return sorted_profit[-1], sorted_profit[-2], sorted_profit[-3]
 
 
 def retrieve_top_product_subcategories():
@@ -212,4 +210,4 @@ def retrieve_top_product_subcategories():
 
     db.commit()
     dicts[Order_date] = (sorted_sales[-1], sorted_sales[-2], sorted_sales[-3])
-    return (dicts)
+    return dicts
